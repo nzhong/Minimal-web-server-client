@@ -1,0 +1,25 @@
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+  crossorigin="anonymous"></script>
+
+<form action="/formHandler" method="post">
+  <input type="text" name="fieldA" value="">
+  <input type="submit">
+</form>
+
+Name: <div id='name'></div>
+Age: <div id='age'></div>
+Interest: <div id='interest'></div>
+<script>
+  $.ajax({
+    url: "http://127.0.0.1:8000/data",
+    success: function(data, status, jqXHR) {
+      document.getElementById('name').innerHTML=data.name;
+      document.getElementById('age').innerHTML=data.age;
+      document.getElementById('interest').innerHTML=data.interest;
+    },
+    error: function(jqXHR, status, errorThrown) {
+      console.log(status);
+    }
+  });
+</script>
